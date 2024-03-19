@@ -4,9 +4,6 @@
     ],
     "outDir": "dist",
     "rollup": {
-        "emitCJS": true,
-        "esbuild": {
-            "minify": true
-        }
+        "emitCJS": true
     }
 }

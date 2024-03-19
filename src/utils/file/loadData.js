@@ -11,6 +11,6 @@ export async function loadDataFromFile(proxy, filepath) {
             }
         }
     } catch (err) {
-        throw new DatabaseError('Reading file ' + filepath + ' failed. ' + err.message);
+        throw new DatabaseError('Reading and parsing file ' + filepath + ' failed. ' + err.message);
     }
 }

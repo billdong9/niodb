@@ -1,4 +1,15 @@
-import { Nio, DatabaseError } from './../src/main.js';
+import { Nio } from 'niodb';
+
+const db = await new Nio('example_data.json');
+db.name = 'Niodb';
+db.message = 'Hello Niodb!';
+db.users = [
+    {
+        name: 'Bill',
+        age: 19
+    }
+]
+
 
 // const db1 = await new Nio('./test.json');
 // db1.$set('a', {
@@ -14,10 +25,10 @@ import { Nio, DatabaseError } from './../src/main.js';
 // console.log(db1);
 
 
-const db = await new Nio('./test.json');
+// const db = await new Nio('./test.json');
 
 
-console.log(db)
+// console.log(db)
 
 
 
