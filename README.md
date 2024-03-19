@@ -13,18 +13,19 @@ db.users = [
         age: 19
     }
 ]
+db.users[0].age++;
 ```
 
 The `example_data.json` file after running this code is going to be:
 
 ```json
 {
-    "name": "NioDB",
-    "message": "Hello NioDB!",
+    "name": "Niodb",
+    "message": "Hello Niodb!",
     "users": [
         {
             "name": "Bill",
-            "age": 19
+            "age": 20
         }
     ]
 }
@@ -46,20 +47,22 @@ const database = await new Nio(filepath);
 
 If `filepath` is not defined, it will directly return a Nio instance, no `await` is needed. But for consistency, we recommend you to always use `await` when initializing the database.
 
-### Setting and Getting data
+### Setting and Getting Data
 Set a key in the database to hold a value is very simple, just like assigning a value to a JavaScript object:
 
 ```javascript
 database.key = value;
 ```
 
-Then the change of the data will be reflected to the .json file automatically.
+The change of the data will be automatically stored atomically on your disk if `filepath` is given.
 
 And getting the value of a key is also that simple:
 
 ```javascript
 value = database.key;
 ```
+
+Just treating the Nio instances as ordinary JavaScript objects.
 
 Or, you may use wrapper methods `$set` and `$get` to do the same thing:
 
@@ -71,4 +74,5 @@ database.$set(key, value);
 value = database.$get(key);
 ```
 
-The choice is up to you.
+The choices are up to you.
+

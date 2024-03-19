@@ -1,1 +1,10 @@
-{"name":"Niodb","message":"Hello Niodb!","users":[{"name":"Bill","age":19}]}
+{
+    "name": "Niodb",
+    "message": "Hello Niodb!",
+    "users": [
+        {
+            "name": "Bill",
+            "age": 20
+        }
+    ]
+}

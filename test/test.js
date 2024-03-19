@@ -1,5 +1,4 @@
 import { Nio } from 'niodb';
-
 const db = await new Nio('example_data.json');
 db.name = 'Niodb';
 db.message = 'Hello Niodb!';
@@ -9,7 +8,7 @@ db.users = [
         age: 19
     }
 ]
-console.log(db);
+db.users[0].age++;
 
 
 // const db1 = await new Nio('./test.json');
