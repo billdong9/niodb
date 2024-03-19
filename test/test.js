@@ -9,6 +9,7 @@ db.users = [
         age: 19
     }
 ]
+console.log(db);
 
 
 // const db1 = await new Nio('./test.json');
