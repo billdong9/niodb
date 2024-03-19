@@ -98,6 +98,10 @@ The wrapper methods for deleting and checking if a key exists are:
 database.$delete(key);
 
 // check if the key exists
-database.$exists(key);
+isKeyExists = database.$exists(key);
 ```
 
+### Other wrapper methods
+- `$randomKey()`: Return a random key.
+- `$rename(key, newKey)`: Rename key to newKey, this will replace the new key if it already exists.
+- `$type(key)`: Return the data type of the value stored in key. Possible return values are: `array`, `object`, `null`, `number`, `string`, `boolean`.
