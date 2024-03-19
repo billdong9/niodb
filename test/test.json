@@ -1,0 +1,12 @@
+{
+    "data": {
+        "text": "hello",
+        "name": "bill",
+        "arr": ["one", "two", "three", "four"],
+        "level": {
+            "easy": true,
+            "medium": false,
+            "hard": true
+        } 
+    }
+}

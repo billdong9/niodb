@@ -1,0 +1,24 @@
+{
+    "name": "niodb",
+    "version": "1.0.0-alpha.1",
+    "description": "Minimalist & fast local JSON database.",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/billdong9/niodb.git"
+    },
+    "keywords": [
+        "database",
+        "JSON",
+        "local",
+        ""
+    ],
+    "author": "Bill Dong",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/billdong9/niodb/issues"
+    },
+    "homepage": "https://github.com/billdong9/niodb#readme"
+}
