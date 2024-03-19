@@ -1,9 +1,19 @@
 {
     "name": "niodb",
     "version": "1.0.0-alpha.1",
-    "description": "Minimalist & fast local JSON database.",
+    "description": "Minimalist & fast atomic local JSON database.",
+    "type": "module",
+    "main": "./dist/main.cjs",
+    "exports": {
+        ".": {
+            "import": "./dist/main.mjs",
+            "require": "./dist/main.cjs"
+        },
+        "./package": "./package.json",
+        "./package.json": "./package.json"
+    },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "npx unbuild"
     },
     "repository": {
         "type": "git",
@@ -11,14 +21,24 @@
     },
     "keywords": [
         "database",
-        "JSON",
+        "json",
         "local",
-        ""
+        "db",
+        "simple",
+        "new",
+        "app",
+        "electron"
+    ],
+    "files": [
+        "dist"
     ],
     "author": "Bill Dong",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/billdong9/niodb/issues"
     },
-    "homepage": "https://github.com/billdong9/niodb#readme"
+    "homepage": "https://github.com/billdong9/niodb#readme",
+    "devDependencies": {
+        "unbuild": "^2.0.0"
+    }
 }

@@ -1,0 +1,12 @@
+{
+    "entries": [
+        "./src/main.js"
+    ],
+    "outDir": "dist",
+    "rollup": {
+        "emitCJS": true,
+        "esbuild": {
+            "minify": true
+        }
+    }
+}

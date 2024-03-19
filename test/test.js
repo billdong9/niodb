@@ -9,7 +9,9 @@ db1.$set('a', {
         }
     }
 })
-console.log(db1.$rename('a', 'info').$get('info'))
+db1.b = 2;
+console.log(db1.a.ab.$set('c', 2));
+console.log(JSON.stringify(db1));
 
 
 

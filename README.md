@@ -1,0 +1,5 @@
+一个json file是一个database
+每一个nio实例都是一个databse，指代一个json file
+支持json里的所有数据格式
+
+operation支持链式
