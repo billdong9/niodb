@@ -1,4 +1,6 @@
 # Niodb
+> Minimalist & fast atomic local JSON database.
+
 ### Quick Example
 The following code creates a Nio database on an empty .json file `example_data.json`, and adds some key-value pairs to it.
 
