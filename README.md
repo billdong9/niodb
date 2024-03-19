@@ -43,18 +43,18 @@ Every Nio instance refers to the database which is linking to a .json file:
 const database = await new Nio(filepath);
 ```
 
-`new Nio(filepath)` when `filepath` is a string, returning a Promise object that will return a Nio instance, so you have to use `await` keyword to get the instance.
+When `filepath` is a string, `new Nio(filepath)` returns a Promise object that will return a Nio instance, so you have to use `await` keyword to get the instance.
 
 If `filepath` is not defined, it will directly return a Nio instance, no `await` is needed. But for consistency, we recommend you to always use `await` when initializing the database.
 
-### Setting and Getting Data
+### Setting and Getting a key
 Set a key in the database to hold a value is very simple, just like assigning a value to a JavaScript object:
 
 ```javascript
 database.key = value;
 ```
 
-The change of the data will be automatically stored atomically on your disk if `filepath` is given.
+The change of the data will be automatically and atomically stored on your disk if `filepath` is defined.
 
 And getting the value of a key is also that simple:
 
@@ -64,15 +64,40 @@ value = database.key;
 
 Just treating the Nio instances as ordinary JavaScript objects.
 
+#### Wrapper methods
 Or, you may use wrapper methods `$set` and `$get` to do the same thing:
 
 ```javascript
-// setting the value to the key
+// set the value to the key
 database.$set(key, value);
 
-// getting the value of the key
+// get the value of the key
 value = database.$get(key);
 ```
 
 The choices are up to you.
+
+### Deleting and Checking if a key exists
+Just like how to delete a key in an orinary JavaScript object:
+
+```javascript
+delete database.key;
+```
+
+And you can use `in` keyword to check if a key exists in the database:
+
+```javascript
+isKeyExists = key in database;
+```
+
+#### Wrapper methods
+The wrapper methods for deleting and checking if a key exists are:
+
+```javascript
+// delete the key
+database.$delete(key);
+
+// check if the key exists
+database.$exists(key);
+```
 
