@@ -1,17 +1,17 @@
 import { DataOp } from "./operation.js";
-import { loadDataFromFile } from "../utils/loadData.js";
+import { loadDataFromFile } from "../utils/file/loadData.js";
+import { writeDataToFile } from "../utils/file/writeData.js";
+import { getValidDataType } from "../utils/data/validDataType.js";
 
 class Nio {
     #filepath;
     #isFileDatabase;
-    #data;
     #isDataLoaded;
     #isUpdaterActive;
 
     constructor(filepath) {
         this.#filepath = filepath;
         this.#isFileDatabase = true;
-        this.#data = {};
         this.#isDataLoaded = false;
         this.#isUpdaterActive = false;
 
@@ -20,7 +20,7 @@ class Nio {
             this.#isFileDatabase = false;
         }
 
-        const proxy = this.#bindProxy(this, this.#data);
+        const proxy = this.#bindProxy(this);
 
         if (this.#isFileDatabase) {
             return new Promise(async (res, rej) => {
@@ -38,31 +38,30 @@ class Nio {
         return proxy;
     }
 
-    #bindProxy(obj, dataObj) {
+    #bindProxy(obj) {
         const proxy = new Proxy(obj, {
             get: (target, key) => {
-                if (dataObj[key] instanceof Object) return this.#bindProxy(obj[key], dataObj[key]);
-                // check for Nio class methods
-                if (obj === this && !(key in dataObj) && key in this) {
-                    return this[key];
-                }
+                if (obj[key] instanceof Object) return this.#bindProxy(obj[key]);
                 // check for data operation
-                if (!(key in dataObj) && key in operation) {
+                if (!(key in obj) && key in operation) {
                     return operation[key];
                 }
-                return dataObj[key];
+                return obj[key];
             },
             set: (target, key, val, receiver) => {
                 // check for valid val data type. If undefined, then delete the key.
+                const dataTypeCheckObj = getValidDataType(val);
+                if (!dataTypeCheckObj.isValid) {
+                    throw new TypeError('Cannot set "' + key + '" to "' + val + '", because it is not a valid data type.');
+                }
+                val = dataTypeCheckObj.data;
 
                 Reflect.set(target, key, val, receiver);
-                dataObj[key] = val;
                 this.#dataFileUpdater();
                 return val;
             },
             deleteProperty: (target, key) => {
                 Reflect.deleteProperty(target, key);
-                delete dataObj[key];
                 this.#dataFileUpdater();
                 return true;
             }
@@ -78,9 +77,9 @@ class Nio {
             // sync
             this.#isUpdaterActive = true;
             res();
-        }).then(() => {
+        }).then(async () => {
             // async
-            console.log(332123);
+            await writeDataToFile(this, this.#filepath);
             this.#isUpdaterActive = false;
         })
     }
