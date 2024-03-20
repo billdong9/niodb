@@ -12,10 +12,18 @@
     "./package": "./package.json",
     "./package.json": "./package.json"
   },
-  "standard": {},
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "scripts": {
     "build": "npx unbuild",
-    "lint": "standard"
+    "lint": "standard",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
