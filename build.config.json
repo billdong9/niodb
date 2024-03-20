@@ -1,9 +1,9 @@
 {
-    "entries": [
-        "./src/main.js"
-    ],
-    "outDir": "dist",
-    "rollup": {
-        "emitCJS": true
-    }
+  "entries": [
+    "./src/main.js"
+  ],
+  "outDir": "dist",
+  "rollup": {
+    "emitCJS": true
+  }
 }

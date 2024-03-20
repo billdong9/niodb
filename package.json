@@ -1,44 +1,48 @@
 {
-    "name": "niodb",
-    "version": "1.0.0-alpha.1",
-    "description": "Minimalist & fast atomic local JSON database.",
-    "type": "module",
-    "main": "./dist/main.cjs",
-    "exports": {
-        ".": {
-            "import": "./dist/main.mjs",
-            "require": "./dist/main.cjs"
-        },
-        "./package": "./package.json",
-        "./package.json": "./package.json"
+  "name": "niodb",
+  "version": "0.1.0",
+  "description": "Minimalist & fast atomic local JSON database.",
+  "type": "module",
+  "main": "./dist/main.cjs",
+  "exports": {
+    ".": {
+      "import": "./dist/main.mjs",
+      "require": "./dist/main.cjs"
     },
-    "scripts": {
-        "build": "npx unbuild"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/billdong9/niodb.git"
-    },
-    "keywords": [
-        "database",
-        "json",
-        "local",
-        "db",
-        "simple",
-        "new",
-        "app",
-        "electron"
-    ],
-    "files": [
-        "dist"
-    ],
-    "author": "Bill Dong",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/billdong9/niodb/issues"
-    },
-    "homepage": "https://github.com/billdong9/niodb#readme",
-    "devDependencies": {
-        "unbuild": "^2.0.0"
-    }
+    "./package": "./package.json",
+    "./package.json": "./package.json"
+  },
+  "standard": {},
+  "scripts": {
+    "build": "npx unbuild",
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billdong9/niodb.git"
+  },
+  "keywords": [
+    "database",
+    "json",
+    "local",
+    "db",
+    "simple",
+    "new",
+    "app",
+    "electron"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "Bill Dong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/billdong9/niodb/issues"
+  },
+  "homepage": "https://github.com/billdong9/niodb#readme",
+  "devDependencies": {
+    "snazzy": "^9.0.0",
+    "standard": "^17.1.0",
+    "unbuild": "^2.0.0"
+  }
 }

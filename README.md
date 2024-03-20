@@ -10,10 +10,10 @@ const db = await new Nio('example_data.json');
 db.name = 'Niodb';
 db.message = 'Hello Niodb!';
 db.users = [
-    {
-        name: 'Bill',
-        age: 19
-    }
+  {
+    name: 'Bill',
+    age: 19
+  }
 ]
 db.users[0].age++;
 ```
@@ -22,14 +22,14 @@ The `example_data.json` file after running this code is going to be:
 
 ```json
 {
-    "name": "Niodb",
-    "message": "Hello Niodb!",
-    "users": [
-        {
-            "name": "Bill",
-            "age": 20
-        }
-    ]
+  "name": "Niodb",
+  "message": "Hello Niodb!",
+  "users": [
+    {
+      "name": "Bill",
+      "age": 20
+    }
+  ]
 }
 ```
 
@@ -106,4 +106,4 @@ isKeyExists = database.$exists(key);
 ### Other wrapper methods
 - `$randomKey()`: Return a random key.
 - `$rename(key, newKey)`: Rename key to newKey, this will replace the new key if it already exists.
-- `$type(key)`: Return the data type of the value stored in key. Possible return values are: `array`, `object`, `null`, `number`, `string`, `boolean`.
+- `$type(key)`: Return the data type of the value stored in key. Possible return values are: `array`, `object`, `null`, `number`, `string`, `boolean`, `undefined`.
