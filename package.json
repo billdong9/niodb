@@ -17,13 +17,10 @@
       "jest"
     ]
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "scripts": {
     "build": "npx unbuild",
     "lint": "standard",
-    "test": "jest"
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" npx jest"
   },
   "repository": {
     "type": "git",

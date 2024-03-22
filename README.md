@@ -1,4 +1,4 @@
-# Niodb
+# 🐬 Niodb
 > Minimalist & fast atomic local JSON database.
 
 ### Quick Example
@@ -64,7 +64,7 @@ And getting the value of a key is also that simple:
 value = database.key;
 ```
 
-Just treating the Nio instances as ordinary JavaScript objects.
+Just treating Nio instances as ordinary JavaScript objects.
 
 #### Wrapper methods
 Or, you may use wrapper methods `$set` and `$get` to do the same thing:
