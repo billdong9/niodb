@@ -46,6 +46,7 @@
   },
   "homepage": "https://github.com/billdong9/niodb#readme",
   "devDependencies": {
+    "jest": "^29.7.0",
     "snazzy": "^9.0.0",
     "standard": "^17.1.0",
     "unbuild": "^2.0.0"
