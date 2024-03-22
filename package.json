@@ -20,7 +20,7 @@
   "scripts": {
     "build": "npx unbuild",
     "lint": "standard",
-    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" npx jest"
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest --forceExit"
   },
   "repository": {
     "type": "git",
