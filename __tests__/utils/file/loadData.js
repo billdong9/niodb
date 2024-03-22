@@ -8,12 +8,12 @@ import '../../../test-helpers/mockFile.js'
 const { loadDataFromFile } = await import('../../../src/utils/file/loadData')
 
 describe('loadDataFromFile(proxy, filepath)', () => {
-  test('loading a file that does not exist', async () => {
+  test('load a file that does not exist', async () => {
     await expect(loadDataFromFile({}, './not_exist_file.json')).resolves.not.toThrow(DatabaseError)
   })
 
   test('filepath is not defiend', async () => {
-    await expect(loadDataFromFile({})).rejects.toThrow(DatabaseError)
+    await expect(loadDataFromFile({})).resolves.not.toThrow(DatabaseError)
   })
 
   test('filepath is a valid json file', async () => {

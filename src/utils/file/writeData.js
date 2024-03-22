@@ -2,9 +2,9 @@ import * as path from 'node:path'
 import { writeFile, rename as renameFile } from 'node:fs/promises'
 import { DatabaseError } from '../../class/error.js'
 
-export async function writeDataToFile (dataObj, filepath) {
+export async function writeDataToFile (proxy, filepath) {
   try {
-    const data = JSON.stringify(dataObj)
+    const data = JSON.stringify(proxy)
     const tempFilePath = path.format({
       ...path.parse(filepath),
       base: undefined,
