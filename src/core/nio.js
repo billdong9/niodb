@@ -89,7 +89,7 @@ class Nio {
       // async
       await writeDataToFile(this, this.#filepath)
       if (typeof this.#config.transactionUpdated === 'function') {
-        this.#config.transactionUpdated(this)
+        this.#config.transactionUpdated()
       }
       this.#isUpdaterActive = false
     })

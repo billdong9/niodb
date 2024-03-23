@@ -31,6 +31,10 @@ describe('new Nio(filepath)', () => {
     await expect(new Nio()).toBeInstanceOf(Nio)
   })
 
+  test('config is an empty object', async () => {
+    await expect(new Nio(undefined, {})).toBeInstanceOf(Nio)
+  })
+
   test('file is not in json format', async () => {
     await expect(new Nio('not_valid_data.json')).rejects.toThrow(DatabaseError)
   })

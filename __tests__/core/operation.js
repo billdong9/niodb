@@ -128,6 +128,10 @@ describe('dataOp.$randomKey()', () => {
     expect(operation.$randomKey()).toBe('b')
   })
 
+  test('get a random key when there are no keys', () => {
+    expect((new DataOp({})).$randomKey()).toBe(undefined)
+  })
+
   afterEach(() => {
     jest.spyOn(global.Math, 'random').mockRestore()
   })
