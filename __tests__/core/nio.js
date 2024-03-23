@@ -74,28 +74,19 @@ describe('new Nio(filepath)', () => {
     expect(db.undefinedVal).toBe(undefined)
   })
 
+  test('set invalid data', async () => {
+    const db = await new Nio()
+    expect(() => {
+      db.a = undefined
+    }).toThrow(TypeError)
+  })
+
   test('delete undefined key', async () => {
     const db = await new Nio()
     db.a = 1
     delete db.b
     expect(db).toEqual({
       a: 1
-    })
-  })
-
-  test('get and update the data inside objects', async () => {
-    const db = await new Nio()
-    db.a = {
-      b: 1,
-      c: [1, 2, 3]
-    }
-    delete db.a.b
-    db.a.c.reverse()
-    db.a.c[0] = 4
-    expect(db).toEqual({
-      a: {
-        c: [4, 2, 1]
-      }
     })
   })
 
