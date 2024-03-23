@@ -35,8 +35,18 @@ describe('new Nio(filepath)', () => {
     await expect(new Nio('not_valid_data.json')).rejects.toThrow(DatabaseError)
   })
 
-  test('file does not exist', async () => {
-    await expect(await new Nio('not_exist.json')).toEqual({})
+  test('add values to the file that does not exist', async () => {
+    const db = await new Nio('not_exist.json', {
+      transactionUpdated () {
+        expect(getFiles('not_exist.json')).toBe(JSON.stringify({
+          a: true
+        }))
+      }
+    })
+    db.a = true
+    expect(db).toEqual({
+      a: true
+    })
   })
 
   test('update values in the file', async () => {

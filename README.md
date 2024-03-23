@@ -1,7 +1,12 @@
 # 🐬 Niodb
 > Minimalist & fast atomic local JSON database.
 
-### Quick Example
+## Installation
+```
+$ npm i niodb --save
+```
+
+## Quick Example
 The following code creates a Nio database on an empty .json file `example_data.json`, and adds some key-value pairs to it.
 
 ```javascript
@@ -34,11 +39,7 @@ The `example_data.json` file after running this code is going to be:
 ```
 
 ## Getting Started
-### Installation
-1. Run `npm i niodb --save` to install NioDB on your local machine.
-2. On your .js file, import NioDB `import { Nio } from 'niodb'`
-
-### The Nio Instance
+### The Nio instance
 Every Nio instance refers to the database which is linking to a .json file:
 
 ```javascript
@@ -49,7 +50,7 @@ When `filepath` is a string, `new Nio(filepath)` returns a Promise object that w
 
 If `filepath` is not defined, it will directly return a Nio instance, no `await` is needed. But for consistency, we recommend you to always use `await` when initializing the database.
 
-### Setting and Getting a key
+### Set / Get the value of a key
 Set a key in the database to hold a value is very simple, just like assigning a value to a JavaScript object:
 
 ```javascript
@@ -79,7 +80,7 @@ value = database.$get(key);
 
 The choices are up to you.
 
-### Deleting and Checking if a key exists
+### Delete / Checking if a key exists
 Just like how to delete a key in an orinary JavaScript object:
 
 ```javascript
@@ -106,4 +107,4 @@ isKeyExists = database.$exists(key);
 ### Other wrapper methods
 - `$randomKey()`: Return a random key.
 - `$rename(key, newKey)`: Rename key to newKey, this will replace the new key if it already exists.
-- `$type(key)`: Return the data type of the value stored in key. Possible return values are: `array`, `object`, `null`, `number`, `string`, `boolean`, `undefined`.
+- `$type(key)`: Return the data type of the value stored in key. Possible return values are: `array`, `object`, `null`, `number`, `string`, `boolean`, and `undefined`.
