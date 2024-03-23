@@ -48,7 +48,8 @@ export class DataOp {
    */
   $rename (key, newKey) {
     if (this.$exists(key)) {
-      this.$set(newKey, this.$get(key)).$delete(key)
+      this.$set(newKey, this.$get(key))
+      this.$delete(key)
     }
     return this.proxy
   }

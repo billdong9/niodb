@@ -2,7 +2,7 @@
 
 // import static modules
 import { DatabaseError } from '../../../src/class/error'
-import '../../../test-helpers/mockFile.js'
+import '../../../test_helpers/mockFile.js'
 
 // import tested modules
 const { loadDataFromFile } = await import('../../../src/utils/file/loadData')

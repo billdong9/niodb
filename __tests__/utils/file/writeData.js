@@ -2,7 +2,7 @@
 
 // import static modules
 import { DatabaseError } from '../../../src/class/error'
-import { getFiles, hasFiles } from '../../../test-helpers/mockFile.js'
+import { getFiles, hasFiles } from '../../../test_helpers/mockFile.js'
 
 // import tested modules
 const { writeDataToFile } = await import('../../../src/utils/file/writeData')
