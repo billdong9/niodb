@@ -1,5 +1,5 @@
 # 🐬 Niodb
-> Elegant & fast atomic local JSON database.
+> The simplest high performance local JSON database.
 
 ## Installation
 ```
@@ -33,8 +33,8 @@ The `example_data.json` file after running this code is going to be:
 ```
 
 ## Getting Started
-### Set / Get the value of a key
-Set a key in the database to hold a value is very simple, just like assigning a value to a JavaScript object:
+### Setting / Getting the value of a key
+Setting a key in the database to hold a value is like assigning a value to a JavaScript object:
 
 ```javascript
 import { Nio } from 'niodb'
@@ -43,7 +43,7 @@ const db = await new Nio()
 db.key = 'value'
 ```
 
-The change of the data will be asynchronously and atomically stored on your disk if `filepath` is defined.
+If `filepath` is defined, changes to the data will be stored on disk asynchronously and atomically.
 
 Getting the value of a key is also very simple:
 
@@ -51,20 +51,20 @@ Getting the value of a key is also very simple:
 console.log(db.key)
 ```
 
-🌟 Just treating Nio instances as ordinary JavaScript objects.
+🌟 Just think of the Nio instance as a normal JavaScript object.
 
 #### Wrapper methods
-Or, you may use wrapper methods `$set` and `$get` to do the same thing:
+Alternatively, you can use wrapper methods `$set` and `$get` to do the same thing:
 
 ```javascript
 db.$set(key, value)
 db.$get(key)
 ```
 
-The choices are up to you.
+The choice is yours.
 
-### Delete / Check if a key exists
-Just like how to delete and check a key in JavaScript objects:
+### Deleting / Checking if a key exists
+Just like deleting and checking for keys in JavaScript objects:
 
 ```javascript
 delete db.key
@@ -72,8 +72,6 @@ console.log(key in db)
 ```
 
 #### Wrapper methods
-The wrapper methods for deleting and checking if a key exists are:
-
 ```javascript
 db.$delete(key)
 db.$exists(key)
@@ -83,16 +81,16 @@ db.$exists(key)
 ### Nio
 - `new Nio(filepath, config)`:
 
-Every Nio instance refers to the database which is linking to a .json file:
+Each Nio instance is a database binding to a .json file:
 
 ```javascript
 const database = await new Nio(filepath, config);
 ```
 
 #### Filepath
-If `filepath` is a string, `new Nio(filepath)` returns a Promise object that will return a Nio instance, so you have to use `await` keyword to get the instance.
+If `filepath` is a string, `new Nio(filepath)` returns a Promise object that will return a Nio instance, so `await` must be used to get the instance.
 
-If `filepath` is not defined, it will directly return a Nio instance, no `await` is needed. But for consistency, we recommend you to always use `await` when initializing the database.
+If `filepath` is not defined, it will return a Nio instance, so no `await` is needed. However, for consistency, you should always use `await` when initializing the database.
 
 #### Config
 `config` is optional, it should be an object.
@@ -108,16 +106,16 @@ await new Nio(filepath, {
 
 ### Wrapper methods
 All wrapper methods are:
-- `$set(key, value)`: Set the value of a key. Setting the value to `undefined` will give you a `TypeError`.
+- `$set(key, value)`: Set the value of a key. Setting the value to `undefined` will lead to a `TypeError`.
 - `$get(key)`: Get the value of a key.
 - `$delete(key)`: Delete a key.
-- `$exists(key)`: Returns if a key exists.
+- `$exists(key)`: Return if a key exists.
 - `$randomKey()`: Return a random key.
-- `$rename(key, newKey)`: Rename key to newKey, this will replace the new key if it already exists.
+- `$rename(key, newKey)`: Rename key to newKey, replacing the new key if it already exists.
 - `$type(key)`: Return the data type of the value stored in key. Possible return values are: `array`, `object`, `null`, `number`, `string`, `boolean`, and `undefined`.
 
 #### Chaining
-And sometimes you may want to chain together methods:
+You can chain together wrapper methods:
 
 ```javascript
 const db = await new Nio()
@@ -146,3 +144,12 @@ You will get:
 ```javascript
 import { DatabaseError } from 'niodb'
 ```
+
+## Test & Build
+```
+$ npm test
+$ npm build
+```
+
+## License
+[MIT](https://github.com/billdong9/niodb/blob/main/LICENSE)
