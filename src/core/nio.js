@@ -5,12 +5,14 @@ import { getValidDataType } from '../utils/data/validDataType.js'
 
 class Nio {
   #filepath
+  #config
   #isFileDatabase
   #isDataLoaded
   #isUpdaterActive
 
-  constructor (filepath) {
+  constructor (filepath, config) {
     this.#filepath = filepath
+    this.#config = config
     this.#isFileDatabase = true
     this.#isDataLoaded = false
     this.#isUpdaterActive = false
@@ -19,19 +21,19 @@ class Nio {
     if (this.#filepath === undefined || this.#filepath === null || !this.#filepath) {
       this.#isFileDatabase = false
     }
+    if (typeof config !== 'object') {
+      this.#config = {}
+    }
 
     const proxy = this.#bindProxy(this)
-
     if (this.#isFileDatabase) {
       return new Promise((resolve, reject) => {
-        try {
-          loadDataFromFile(proxy, this.#filepath).then(() => {
-            this.#isDataLoaded = true
-            resolve(proxy)
-          })
-        } catch (err) {
+        loadDataFromFile(proxy, this.#filepath).then(() => {
+          this.#isDataLoaded = true
+          resolve(proxy)
+        }).catch((err) => {
           reject(err)
-        }
+        })
       })
     }
 
@@ -63,7 +65,7 @@ class Nio {
 
         Reflect.set(target, key, val, receiver)
         this.#dataFileUpdater()
-        return val
+        return true
       },
       deleteProperty: (target, key) => {
         key = key.toString()
@@ -86,6 +88,9 @@ class Nio {
     }).then(async () => {
       // async
       await writeDataToFile(this, this.#filepath)
+      if (typeof this.#config.transactionUpdated === 'function') {
+        this.#config.transactionUpdated(this)
+      }
       this.#isUpdaterActive = false
     })
   }
