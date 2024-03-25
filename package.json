@@ -1,7 +1,7 @@
 {
   "name": "niodb",
   "version": "0.1.0",
-  "description": "Minimalist & fast atomic local JSON database.",
+  "description": "The simplest local JSON database",
   "type": "module",
   "main": "./dist/main.cjs",
   "exports": {
