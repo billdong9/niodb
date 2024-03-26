@@ -22,6 +22,8 @@ export function getValidDataType (data) {
   }
 
   if (Array.isArray(data)) {
+    // deep clone the data
+    const newData = []
     for (const i in data) {
       const validDataTypeObj = getValidDataType(data[i])
       if (!validDataTypeObj.isValid) {
@@ -29,13 +31,16 @@ export function getValidDataType (data) {
           isValid: false
         }
       }
+      newData[i] = validDataTypeObj.data
     }
     return {
       isValid: true,
-      data
+      data: newData
     }
   }
   if (data instanceof Object) {
+    // ensuring the consistency of memory and disk json data & deep clone the data
+    const newData = {}
     for (const key in data) {
       const validDataTypeObj = getValidDataType(data[key])
       if (!validDataTypeObj.isValid) {
@@ -43,10 +48,11 @@ export function getValidDataType (data) {
           isValid: false
         }
       }
+      newData[key] = validDataTypeObj.data
     }
     return {
       isValid: true,
-      data
+      data: newData
     }
   }
 

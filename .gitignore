@@ -1,5 +1,6 @@
 .DS_Store
 idea.md
+update.md
 node_modules
 dist
 coverage
