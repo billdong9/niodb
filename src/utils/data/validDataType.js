@@ -1,3 +1,19 @@
+/**
+ * Check if the type of the data is a valid json data type
+ */
+
+/**
+ * Expose getValidDataType function
+ */
+
+/**
+ * @param {any} data
+ * @returns "{
+ *   isValid: is the type of the data a valid json data type
+ *   data?: data after changing into a valid json type
+ * }"
+ */
+
 export function getValidDataType (data) {
   // check for undefined
   if (data === undefined) {
