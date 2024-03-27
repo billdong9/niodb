@@ -10,7 +10,7 @@ class Nio {
   #isDataLoaded
   #isUpdaterActive
 
-  constructor (filepath, config) {
+  constructor(filepath, config) {
     this.#filepath = filepath
     this.#config = config
     this.#isFileDatabase = true
@@ -41,7 +41,7 @@ class Nio {
     return proxy
   }
 
-  #bindProxy (obj) {
+  #bindProxy(obj) {
     const proxy = new Proxy(obj, {
       get: (target, key) => {
         key = key.toString()
@@ -79,7 +79,7 @@ class Nio {
     return proxy
   }
 
-  #dataFileUpdater () {
+  #dataFileUpdater() {
     if (this.#isUpdaterActive || !this.#isFileDatabase || !this.#isDataLoaded) return
     new Promise(resolve => {
       // sync

@@ -38,7 +38,7 @@ export function getValidDataType (data) {
       data: newData
     }
   }
-  if (data instanceof Object) {
+  if (typeof data === 'object') {
     // ensuring the consistency of memory and disk json data & deep clone the data
     const newData = {}
     for (const key in data) {
