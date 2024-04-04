@@ -95,6 +95,18 @@ describe('new Nio(filepath)', () => {
     }).toThrow(TypeError)
   })
 
+  test('set null prototype object', async () => {
+    const db = await new Nio()
+    const data = Object.create(null)
+    data.a = true
+    db.data = data
+    expect(db).toEqual({
+      data: {
+        a: true
+      }
+    })
+  })
+
   test('delete undefined key', async () => {
     const db = await new Nio()
     db.a = 1
