@@ -29,6 +29,29 @@ export function getValidDataType (data) {
       data
     }
   }
+  if (data instanceof String) {
+    return {
+      isValid: true,
+      data: data.toString()
+    }
+  }
+  if (data instanceof Number) {
+    if (Number.isFinite(data)) {
+      data = data.valueOf()
+    } else {
+      data = null
+    }
+    return {
+      isValid: true,
+      data
+    }
+  }
+  if (data instanceof Boolean) {
+    return {
+      isValid: true,
+      data: data.valueOf()
+    }
+  }
 
   if (data instanceof Set) {
     data = Array.from(data)
