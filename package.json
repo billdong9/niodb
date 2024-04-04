@@ -1,6 +1,6 @@
 {
   "name": "niodb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The simplest local JSON database",
   "type": "module",
   "main": "./dist/main.cjs",
@@ -15,6 +15,9 @@
   "standard": {
     "env": [
       "jest"
+    ],
+    "ignore": [
+      "__tests__/utils/data/validDataType.js"
     ]
   },
   "scripts": {

@@ -1,6 +1,23 @@
+/**
+ * Import dependencies
+ */
+
 import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { DatabaseError } from '../../class/error.js'
+
+/**
+ * Load data from the file
+ */
+
+/**
+ * Expose loadDataFromFile function
+ */
+
+/**
+ * @param {object} proxy The object into which the data will be loaded
+ * @param {string} filepath
+ */
 
 export async function loadDataFromFile (proxy, filepath) {
   try {

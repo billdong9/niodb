@@ -1,3 +1,19 @@
+/**
+ * Check if the type of the data is a valid json data type
+ */
+
+/**
+ * Expose getValidDataType function
+ */
+
+/**
+ * @param {any} data
+ * @returns "{
+ *   isValid: is the type of the data a valid json data type
+ *   data?: data after changing into a valid json type
+ * }"
+ */
+
 export function getValidDataType (data) {
   // check for undefined
   if (data === undefined) {
@@ -13,6 +29,29 @@ export function getValidDataType (data) {
       data
     }
   }
+  if (data instanceof String) {
+    return {
+      isValid: true,
+      data: data.toString()
+    }
+  }
+  if (data instanceof Number) {
+    if (Number.isFinite(data.valueOf())) {
+      data = data.valueOf()
+    } else {
+      data = null
+    }
+    return {
+      isValid: true,
+      data
+    }
+  }
+  if (data instanceof Boolean) {
+    return {
+      isValid: true,
+      data: data.valueOf()
+    }
+  }
 
   if (data instanceof Set) {
     data = Array.from(data)
@@ -22,6 +61,8 @@ export function getValidDataType (data) {
   }
 
   if (Array.isArray(data)) {
+    // deep clone the data
+    const newData = []
     for (const i in data) {
       const validDataTypeObj = getValidDataType(data[i])
       if (!validDataTypeObj.isValid) {
@@ -29,13 +70,16 @@ export function getValidDataType (data) {
           isValid: false
         }
       }
+      newData[i] = validDataTypeObj.data
     }
     return {
       isValid: true,
-      data
+      data: newData
     }
   }
-  if (data instanceof Object) {
+  if (typeof data === 'object') {
+    // ensuring the consistency of memory and disk json data & deep clone the data
+    const newData = {}
     for (const key in data) {
       const validDataTypeObj = getValidDataType(data[key])
       if (!validDataTypeObj.isValid) {
@@ -43,10 +87,11 @@ export function getValidDataType (data) {
           isValid: false
         }
       }
+      newData[key] = validDataTypeObj.data
     }
     return {
       isValid: true,
-      data
+      data: newData
     }
   }
 
