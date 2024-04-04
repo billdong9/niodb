@@ -36,7 +36,7 @@ export function getValidDataType (data) {
     }
   }
   if (data instanceof Number) {
-    if (Number.isFinite(data)) {
+    if (Number.isFinite(data.valueOf())) {
       data = data.valueOf()
     } else {
       data = null

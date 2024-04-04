@@ -25,6 +25,14 @@ describe('getValidDataType(data)', () => {
     })
   })
 
+  test('string object', () => {
+    const data = new String('hello world')
+    expect(getValidDataType(data)).toStrictEqual({
+      isValid: true,
+      data: 'hello world'
+    })
+  })
+
   test('number', () => {
     const data = 0.0323
     expect(getValidDataType(data)).toStrictEqual({
@@ -33,11 +41,47 @@ describe('getValidDataType(data)', () => {
     })
   })
 
+  test('number object', () => {
+    let data = new Number(0.0323)
+    expect(getValidDataType(data)).toStrictEqual({
+      isValid: true,
+      data: 0.0323
+    })
+
+    // NaN
+    data = new Number(0 / 0)
+    expect(getValidDataType(data)).toStrictEqual({
+      isValid: true,
+      data: null
+    })
+
+    // Infinity
+    data = new Number(1 / 0)
+    expect(getValidDataType(data)).toStrictEqual({
+      isValid: true,
+      data: null
+    })
+  })
+
   test('boolean', () => {
     const data = true
     expect(getValidDataType(data)).toStrictEqual({
       isValid: true,
       data
+    })
+  })
+
+  test('boolean object', () => {
+    let data = new Boolean(0)
+    expect(getValidDataType(data)).toStrictEqual({
+      isValid: true,
+      data: false
+    })
+
+    data = new Boolean('string')
+    expect(getValidDataType(data)).toStrictEqual({
+      isValid: true,
+      data: true
     })
   })
 
